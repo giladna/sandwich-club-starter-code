@@ -18,7 +18,7 @@ public class Sandwich {
     }
 
     public Sandwich(Name name, String placeOfOrigin, String description, String image, List<String> ingredients) {
-        this.name = name;
+        this.name = (name == null) ? new Name() : name;
         this.placeOfOrigin = placeOfOrigin;
         this.description = description;
         this.image = image;
