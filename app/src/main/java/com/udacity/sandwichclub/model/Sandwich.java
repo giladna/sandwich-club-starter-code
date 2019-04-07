@@ -4,8 +4,7 @@ import java.util.List;
 
 public class Sandwich {
 
-    private String mainName;
-    private List<String> alsoKnownAs = null;
+    private Name name;
     private String placeOfOrigin;
     private String description;
     private String image;
@@ -15,31 +14,23 @@ public class Sandwich {
      * No args constructor for use in serialization
      */
     public Sandwich() {
+        name = new Name();
     }
 
-    public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
-        this.mainName = mainName;
-        this.alsoKnownAs = alsoKnownAs;
+    public Sandwich(Name name, String placeOfOrigin, String description, String image, List<String> ingredients) {
+        this.name = name;
         this.placeOfOrigin = placeOfOrigin;
         this.description = description;
         this.image = image;
         this.ingredients = ingredients;
     }
 
-    public String getMainName() {
-        return mainName;
+    public Name getName() {
+        return name;
     }
 
-    public void setMainName(String mainName) {
-        this.mainName = mainName;
-    }
-
-    public List<String> getAlsoKnownAs() {
-        return alsoKnownAs;
-    }
-
-    public void setAlsoKnownAs(List<String> alsoKnownAs) {
-        this.alsoKnownAs = alsoKnownAs;
+    public void setName(Name name) {
+        this.name = name;
     }
 
     public String getPlaceOfOrigin() {
