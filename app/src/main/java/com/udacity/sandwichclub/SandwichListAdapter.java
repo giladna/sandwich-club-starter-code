@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -62,17 +63,10 @@ public class SandwichListAdapter extends
 
         @Override
         public void onClick(View view) {
-            // Get the position of the item that was clicked.
             int mPosition = getLayoutPosition();
 
-            // Use that to access the affected item in mWordList.
-            String element = mSandwichList.get(mPosition);
-            // Change the word in the mWordList.
+            //String element = mSandwichList.get(mPosition);
             launchDetailActivity(mPosition);
-            //mSandwichList.set(mPosition, "Clicked! " + element);
-            // Notify the adapter, that the data has changed so it can
-            // update the RecyclerView to display the data.
-            //mAdapter.notifyDataSetChanged();
         }
 
         private void launchDetailActivity(int position) {
@@ -87,28 +81,13 @@ public class SandwichListAdapter extends
     public SandwichListAdapter(Context context, LinkedList<String> sandwichList) {
         this.context = context;
         mInflater = LayoutInflater.from(context);
-        this.mSandwichList = sandwichList;
+
+        mSandwichList = new LinkedList<>(sandwichList);
+        Collections.sort(mSandwichList);
+
+
     }
 
-    /**
-     * Called when RecyclerView needs a new ViewHolder of the given type to
-     * represent an item.
-     *
-     * This new ViewHolder should be constructed with a new View that can
-     * represent the items of the given type. You can either create a new View
-     * manually or inflate it from an XML layout file.
-     *
-     * The new ViewHolder will be used to display items of the adapter using
-     * onBindViewHolder(ViewHolder, int, List). Since it will be reused to
-     * display different items in the data set, it is a good idea to cache
-     * references to sub views of the View to avoid unnecessary findViewById()
-     * calls.
-     *
-     * @param parent   The ViewGroup into which the new View will be added after
-     *                 it is bound to an adapter position.
-     * @param viewType The view type of the new View. @return A new ViewHolder
-     *                 that holds a View of the given view type.
-     */
     @Override
     public SandwichListAdapter.SandwichViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflate an item view.
@@ -132,7 +111,7 @@ public class SandwichListAdapter extends
         // Retrieve the data for that position.
         String mCurrent = mSandwichList.get(position);
         // Add the data to the view holder.
-        holder.sandwichItemView.setText(mCurrent);
+        holder.sandwichItemView.setText((position+1) + ") " + mCurrent);
     }
 
     /**

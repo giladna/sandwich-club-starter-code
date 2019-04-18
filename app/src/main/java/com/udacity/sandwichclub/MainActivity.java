@@ -22,23 +22,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_names);
-        LinkedList<String> sandwichesList = new LinkedList<String>(Arrays.asList(sandwiches));
+        LinkedList<String> sandwichesList = new LinkedList<>(Arrays.asList(sandwiches));
 
-        // Simplification: Using a ListView instead of a RecyclerView
         RecyclerView recyclerView = findViewById(R.id.sandwiches_recyclerview);
         SandwichListAdapter mAdapter = new SandwichListAdapter(this, sandwichesList);
         recyclerView.setAdapter(mAdapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.getAdapter().notifyItemInserted(sandwichesList.size());
-//        // Scroll to the bottom.
-//        recyclerView.smoothScrollToPosition(sandwichesList.size());
-
-    }
-
-    private void launchDetailActivity(int position) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_POSITION, position);
-        startActivity(intent);
+        recyclerView.getAdapter().notifyItemInserted(sandwichesList.size());
+        recyclerView.smoothScrollToPosition(sandwichesList.size());
     }
 }

@@ -2,7 +2,7 @@ package com.udacity.sandwichclub.model;
 
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich implements Comparable {
 
     private Name name;
     private String placeOfOrigin;
@@ -63,5 +63,30 @@ public class Sandwich {
 
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Sandwich secondObj = (Sandwich) o;
+        if (this.getName() != null &&
+                this.getName().getMainName() != null &&
+                secondObj.getName() != null &&
+                secondObj.getName().getMainName() != null) {
+            return this.getName().getMainName().compareTo(((Sandwich) o).getName().getMainName());
+        }
+        if ((this.getName() == null ||
+                this.getName().getMainName() == null) &&
+                secondObj.getName() != null &&
+                secondObj.getName().getMainName() != null) {
+            return -1;
+        }
+
+        if ((this.getName() != null ||
+                this.getName().getMainName() != null) &&
+                secondObj.getName() == null ||
+                secondObj.getName().getMainName() == null) {
+            return 1;
+        }
+        return 0;
     }
 }
