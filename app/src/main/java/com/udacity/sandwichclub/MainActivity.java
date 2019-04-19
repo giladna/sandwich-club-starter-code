@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,5 +32,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.getAdapter().notifyItemInserted(sandwichesList.size());
         recyclerView.smoothScrollToPosition(sandwichesList.size());
+        recyclerView.addItemDecoration(new
+                DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
     }
 }

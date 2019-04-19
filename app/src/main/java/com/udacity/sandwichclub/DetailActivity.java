@@ -76,26 +76,28 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+        if (sandwich.getPlaceOfOrigin() != null) {
+            origin_tv.setText(sandwich.getPlaceOfOrigin());
+        }
+
+        if (sandwich.getName().getAlsoKnownAs() != null && !sandwich.getName().getAlsoKnownAs().isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+            for (String val : sandwich.getName().getAlsoKnownAs()) {
+                sb.append("- ").append(val).append("\n");
+            }
+            also_known_tv.setText(sb.toString());
+        }
 
         if (sandwich.getIngredients() != null && !sandwich.getIngredients().isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (String val : sandwich.getIngredients()) {
-                sb.append(val).append("\n");
+                sb.append("- ").append(val).append("\n");
             }
             ingredients_tv.setText(sb.toString());
         }
-        if (sandwich.getName().getAlsoKnownAs() != null && !sandwich.getName().getAlsoKnownAs().isEmpty()) {
-            StringBuilder sb = new StringBuilder();
-            for (String val : sandwich.getName().getAlsoKnownAs()) {
-                sb.append(val).append("\n");
-            }
-            also_known_tv.setText(sb.toString());
-        }
+
         if (sandwich.getDescription() != null) {
             description_tv.setText(sandwich.getDescription());
-        }
-        if (sandwich.getPlaceOfOrigin() != null) {
-            origin_tv.setText(sandwich.getPlaceOfOrigin());
         }
     }
 }
