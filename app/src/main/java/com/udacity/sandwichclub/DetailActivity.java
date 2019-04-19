@@ -12,7 +12,6 @@ import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class DetailActivity extends AppCompatActivity {
