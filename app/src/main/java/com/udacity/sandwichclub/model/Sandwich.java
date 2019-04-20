@@ -2,10 +2,9 @@ package com.udacity.sandwichclub.model;
 
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich implements Comparable {
 
-    private String mainName;
-    private List<String> alsoKnownAs = null;
+    private Name name;
     private String placeOfOrigin;
     private String description;
     private String image;
@@ -15,31 +14,23 @@ public class Sandwich {
      * No args constructor for use in serialization
      */
     public Sandwich() {
+        name = new Name();
     }
 
-    public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
-        this.mainName = mainName;
-        this.alsoKnownAs = alsoKnownAs;
+    public Sandwich(Name name, String placeOfOrigin, String description, String image, List<String> ingredients) {
+        this.name = (name == null) ? new Name() : name;
         this.placeOfOrigin = placeOfOrigin;
         this.description = description;
         this.image = image;
         this.ingredients = ingredients;
     }
 
-    public String getMainName() {
-        return mainName;
+    public Name getName() {
+        return name;
     }
 
-    public void setMainName(String mainName) {
-        this.mainName = mainName;
-    }
-
-    public List<String> getAlsoKnownAs() {
-        return alsoKnownAs;
-    }
-
-    public void setAlsoKnownAs(List<String> alsoKnownAs) {
-        this.alsoKnownAs = alsoKnownAs;
+    public void setName(Name name) {
+        this.name = name;
     }
 
     public String getPlaceOfOrigin() {
@@ -72,5 +63,31 @@ public class Sandwich {
 
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    //used for sorting the sandwiches by name
+    @Override
+    public int compareTo(Object o) {
+        Sandwich secondObj = (Sandwich) o;
+        if (this.getName() != null &&
+                this.getName().getMainName() != null &&
+                secondObj.getName() != null &&
+                secondObj.getName().getMainName() != null) {
+            return this.getName().getMainName().compareTo(((Sandwich) o).getName().getMainName());
+        }
+        if ((this.getName() == null ||
+                this.getName().getMainName() == null) &&
+                secondObj.getName() != null &&
+                secondObj.getName().getMainName() != null) {
+            return -1;
+        }
+
+        if ((this.getName() != null ||
+                this.getName().getMainName() != null) &&
+                secondObj.getName() == null ||
+                secondObj.getName().getMainName() == null) {
+            return 1;
+        }
+        return 0;
     }
 }
