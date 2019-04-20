@@ -84,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
         if (sandwich.getName().getAlsoKnownAs() != null && !sandwich.getName().getAlsoKnownAs().isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (String val : sandwich.getName().getAlsoKnownAs()) {
-                sb.append("- ").append(val).append("\n");
+                sb.append(val).append("\n");
             }
             also_known_tv.setText(sb.toString());
         }
