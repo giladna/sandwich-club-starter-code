@@ -22,13 +22,8 @@ public class JsonUtils {
     public static final String IMAGE = "image";
     public static final String INGREDIENTS = "ingredients";
 
+    //JSONObject form
     public static Sandwich parseSandwichJson(String json) {
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(json);
-        return new Gson().fromJson(jsonObj, Sandwich.class);
-    }
-
-    public static Sandwich parseSandwichJson1(String json) {
         Sandwich sandwichInstance = new Sandwich();
         JSONObject sandwichJsonObject = null;
         try {
@@ -76,6 +71,13 @@ public class JsonUtils {
             e.printStackTrace();
         }
         return sandwichInstance;
+    }
+
+    //Gson form
+    public static Sandwich parseSandwichJsonGson(String json) {
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObj = (JsonObject) jsonParser.parse(json);
+        return new Gson().fromJson(jsonObj, Sandwich.class);
     }
 }
 

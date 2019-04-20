@@ -65,6 +65,7 @@ public class Sandwich implements Comparable {
         this.ingredients = ingredients;
     }
 
+    //used for sorting the sandwiches by name
     @Override
     public int compareTo(Object o) {
         Sandwich secondObj = (Sandwich) o;

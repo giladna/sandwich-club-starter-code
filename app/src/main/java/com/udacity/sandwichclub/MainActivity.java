@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_names);
         LinkedList<String> sandwichesList = new LinkedList<>(Arrays.asList(sandwiches));
 
+        // using recycler view
         RecyclerView recyclerView = findViewById(R.id.sandwiches_recyclerview);
         SandwichListAdapter mAdapter = new SandwichListAdapter(this, sandwichesList);
         recyclerView.setAdapter(mAdapter);

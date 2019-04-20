@@ -28,10 +28,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.LinkedList;
 
-/**
- * Shows how to implement a simple Adapter for a RecyclerView.
- * Demonstrates how to add a click handler for each item in the ViewHolder.
- */
+
 public class SandwichListAdapter extends
         RecyclerView.Adapter<SandwichListAdapter.SandwichViewHolder> {
 
@@ -64,8 +61,6 @@ public class SandwichListAdapter extends
         @Override
         public void onClick(View view) {
             int mPosition = getLayoutPosition();
-
-            //String element = mSandwichList.get(mPosition);
             launchDetailActivity(mPosition);
         }
 
@@ -75,8 +70,6 @@ public class SandwichListAdapter extends
             context.startActivity(intent);
         }
     }
-
-
 
     public SandwichListAdapter(Context context, LinkedList<String> sandwichList) {
         this.context = context;
