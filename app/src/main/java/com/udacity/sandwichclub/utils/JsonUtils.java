@@ -72,12 +72,5 @@ public class JsonUtils {
         }
         return sandwichInstance;
     }
-
-    //Gson form
-    public static Sandwich parseSandwichJsonGson(String json) {
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObj = (JsonObject) jsonParser.parse(json);
-        return new Gson().fromJson(jsonObj, Sandwich.class);
-    }
 }
 
