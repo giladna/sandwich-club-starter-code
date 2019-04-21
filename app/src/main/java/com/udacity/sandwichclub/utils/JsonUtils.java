@@ -32,7 +32,7 @@ public class JsonUtils {
             if (sandwichJsonObject.has(NAME) && !sandwichJsonObject.isNull(NAME)) {
                 name = sandwichJsonObject.getJSONObject(NAME);
                 sandwichInstance.getName().setMainName(name.getString(MAIN_NAME));
-                if (sandwichJsonObject.has(ALSO_KNOWN_AS)) {
+                if (name.has(ALSO_KNOWN_AS)) {
                     List<String> alsoKnownAs = new ArrayList<>();
                     JSONArray alsoKnownAsArray = name.getJSONArray(ALSO_KNOWN_AS);
                     if (alsoKnownAsArray != null) {
