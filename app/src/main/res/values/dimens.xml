@@ -2,4 +2,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="listView_horizontal_margin">16dp</dimen>
+    <dimen name="listView_middle_horizontal_margin">8dp</dimen>
+    <dimen name="listView_vertical_margin">8dp</dimen>
+    <dimen name="listView_top_margin">10dp</dimen>
 </resources>

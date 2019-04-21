@@ -66,6 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
                 .into(ingredientsIv);
 
         setTitle(sandwich.getName().getMainName());
